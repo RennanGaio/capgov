@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-rancher-deployment
+  labels:
+    app: test-rancher
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-rancher
+  template:
+    metadata:
+      labels:
+        app: test-rancher
+    spec:
+      containers:
+      - name: test-rancher
+        image: gaio-httpd
+        ports:
+        - containerPort: 80
